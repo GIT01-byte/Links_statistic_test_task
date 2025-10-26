@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+
+psycopg
+psycopg-binary
+asyncpg
+sqlalchemy_utc
+
+pytest
+pytz
+
+sqladmin
