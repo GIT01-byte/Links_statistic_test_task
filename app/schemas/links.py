@@ -1,6 +1,6 @@
 import datetime
 from typing import List
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class LinksCreateRequest(BaseModel):
@@ -15,3 +15,7 @@ class LinksCreateDTO(BaseModel):
 
 class LinksDTO(LinksCreateDTO):
     id: int
+
+class PaginationParams(BaseModel):
+    limit: int = Field(5, ge=0, le=100, description='Кол-вщ элементов на странице')
+    offset: int = Field(0, ge=0, description='Смещение дял пагинации')

@@ -13,9 +13,16 @@ class AsyncOrm:
             await conn.run_sync(Base.metadata.create_all)
 
     @staticmethod
-    async def get_all_links():
+    async def get_all_links(limit: int, offset: int):
         async with async_session_factory() as session:
-            query = select(LinksOrm)
+            query = select(
+                LinksOrm
+                ).limit(
+                    limit
+                    ).offset(
+                        offset
+                        )
+            
             res = await session.execute(query)
             result_orm = res.scalars().all()
             print(f"{result_orm=}")
@@ -25,14 +32,22 @@ class AsyncOrm:
             return result_dto
 
     @staticmethod
-    async def get_all_domain_with_timestamp(time_from: int, time_to: int):
+    async def get_all_domain_with_timestamp(time_from: int, time_to: int, limit: int, offset: int):
         async with async_session_factory() as session:
-            query = select(LinksOrm).where(
+            query = select(
+                LinksOrm
+                ).where(
                 and_(
                     LinksOrm.timestamp >= time_from,
                     LinksOrm.timestamp <= time_to,
                     )
-                ).distinct(LinksOrm.link)
+                ).distinct(
+                    LinksOrm.link
+                    ).limit(
+                        limit
+                        ).offset(
+                            offset
+                            )
             
             res = await session.execute(query)
             result_orm = res.scalars().all()
