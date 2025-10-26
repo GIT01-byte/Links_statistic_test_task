@@ -4,11 +4,10 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
 from db.orm import AsyncOrm
-
+from db.session import async_engine
 from api.links import router as links_router
 
 from models.links import setup_admin
-from db.session import async_engine
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

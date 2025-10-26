@@ -1,8 +1,7 @@
-
 from fastapi import FastAPI
 from sqladmin import Admin, ModelView
-
 from sqlalchemy.orm import Mapped, mapped_column
+
 from db.session import Base
 
 class LinksOrm(Base):
