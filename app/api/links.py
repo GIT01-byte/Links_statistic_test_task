@@ -5,7 +5,7 @@ from fastapi import APIRouter, Body, Query
 
 from db.orm import AsyncOrm
 from api.service import extract_domain_with_regex
-from dependencies import PaginationParamsDep
+from api.dependencies import PaginationParamsDep
 
 from models.links import LinksOrm
 from schemas.links import LinksCreateRequest
