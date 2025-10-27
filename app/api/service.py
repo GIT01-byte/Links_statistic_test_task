@@ -33,4 +33,4 @@ def extract_domain_with_regex(urls: list[str]) -> list[str]:
         return list_urls
     except Exception as e:
         print(f"Ошибка при парсинге URL '{url}' с помощью regex: {e}")
-        return list_urls # Возвращаем оригинал при ошибке
+        return list_urls # Возвращаем оригинальный массив с при ошибке
